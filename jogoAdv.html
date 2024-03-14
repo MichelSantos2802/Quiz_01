@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+      
+    <style>
+        body {
+        	background-image:url(https://th.bing.com/th/id/R.37ea14d6c346f972c1c6097e8745bc1c?rik=RKaXTAy8vERgwg&pid=ImgRaw&r=0 );
+            font-family: Arial, sans-serif;
+        }
+        #Q{
+        	font-family: cursive; color: greenyellow; text-align: center; margin-top: 150px; font-size: 78px; text-shadow: 7px 7px 4px blue;
+        }
+        #quiz-container{
+        	text-align: center; color: greenyellow; font-size: 35px; font-weight: bold;
+        }
+        #btn{
+        	border-radius: 14px; font-size: 25px;
+        }
+		#options button {
+   			 border-radius: 18px; font-size: 20px; flex-direction: column;
+		}
+		#options {
+    		display: flex;
+    		flex-direction: column; 
+    		align-items: center; 
+    		margin-top: 20px; }
+    	#result{
+    		color: yellow;
+    	}	
+
+    </style>
+</head>
+<body>
+    <h1 id="Q">Quiz</h1>
+    <div id="quiz-container">
+        <div id="question"></div>
+        <div  id="options"></div>
+        <button id="btn" onclick="nextQuestion()">Próxima</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        const questions = [
+            {
+                question: "Qual é a capital do Brasil?",
+                options: ["São Paulo", "Rio de Janeiro", "Brasília", "Salvador"],
+                answer: "Brasília"
+            },
+            {
+                question: "Qual maior bairro de Ananindeua?",
+                options: ["Águas Lindas", "Marituba", "Coqueiro", "40 Horas"],
+                answer: "Coqueiro"
+            },
+            {
+                question: "Qual menor estado brasileiro?",
+                options: ["Sergipe", "Mato grosso", "Alagoas", "Pará"],
+                answer: "Sergipe"
+            },
+            {
+            	 question: "Qual capital de São Paulo?",
+                options: ["Paulistanal", "Sumatém", "Santa Izabel", "São Paulo"],
+                answer: "São Paulo"
+            },
+            {
+                question: "Quais desses abaixos não são estados brasileiros?",
+                options: ["Pará, Rio de Janeiro e Santa Catarina", "Pará, Pernambuco e São Paulo", "Bahia, Palmas e Tocantis", "São Paulo, Bahia e Espírito Santo"],
+                answer: "Bahia, Palmas e Tocantis"
+            },
+            {
+                question: "Qual dos nomes abaixo não é um bairro de Belém?",
+                options: ["Umarizal", "Nazaré", "Icuí", "Pedreira"],
+                answer: "Icuí"
+            },
+            {
+                question: "Analise as afirmações e responda: I- Uma cidade esta localizada dentro de um bairro.	II- Um bairro contém uma rua, e por sua vez uma rua possui um CEP.			III- Um país tem diversas cidades dentro de si, e também possui diversas avenidas e ruas em seu térritorio.IV- Um estado tem varias cidades, regiões e países dentro do seu térritorio.	Está correto as afirmativas:",
+                options: ["I, II e IV", "II e IV", "II e III", "Todas alternativas estão corretas"],
+                answer: "II e III"
+            },
+            {
+                question: "Qual é o maior oceano da Terra?",
+                options: ["Oceano Atlântico", "Oceano Índico", "Oceano Pacífico", "Oceano Ártico"],
+                answer: "Oceano Pacífico"
+            },
+            {
+                question: "Qual é o rio mais longo do mundo?",
+                options: ["Rio Amazonas", "Rio Nilo", "Rio Mississipi", "Rio Yangtzé"],
+                answer: "Rio Nilo"
+            },
+             {
+                question: "Qual é o país mais populoso do mundo?",
+                options: ["Índia", "Estados Unidos", "China", "Brasil"],
+                answer: "China"
+            },
+             {
+                question: "Qual é a capital da França?",
+                options: ["Berlim", "Londres", "Paris", "Roma"],
+                answer: "Paris"
+            }
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+
+        function displayQuestion() {
+            const questionElement = document.getElementById('question');
+            const optionsElement = document.getElementById('options');
+            const currentQ = questions[currentQuestion];
+
+            questionElement.textContent = currentQ.question;
+            optionsElement.innerHTML = '';
+
+            currentQ.options.forEach((option, index) => {
+                const button = document.createElement('button');
+                button.textContent = option;
+                button.onclick = () => checkAnswer(option);
+                optionsElement.appendChild(button);
+            });
+        }
+
+        function checkAnswer(answer) {
+            const currentQ = questions[currentQuestion];
+            if (answer === currentQ.answer) {
+                score++;
+                document.getElementById('result').textContent = "Resposta correta!";
+            } else {
+                document.getElementById('result').textContent = "Resposta incorreta!";
+            }
+        }
+
+        function nextQuestion() {
+            if (currentQuestion < questions.length - 1) {
+                currentQuestion++;
+                displayQuestion();
+                document.getElementById('result').textContent = '';
+            } else {
+                endQuiz();
+            }
+        }
+
+        function endQuiz() {
+            document.getElementById('quiz-container').innerHTML = `
+                <h2><b>Fim do Quiz!</b></h2>
+                <p><b>Sua pontuação é ${score} de ${questions.length}.</b></p>
+            `;
+        }
+
+        displayQuestion();
+    </script>
+</body>
+</html>
