@@ -1,70 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz</title>
-      
+
     <style>
         body {
-            background-image:url(https://th.bing.com/th/id/R.37ea14d6c346f972c1c6097e8745bc1c?rik=RKaXTAy8vERgwg&pid=ImgRaw&r=0 );
+            background-image: url(https://th.bing.com/th/id/R.37ea14d6c346f972c1c6097e8745bc1c?rik=RKaXTAy8vERgwg&pid=ImgRaw&r=0 );
             font-family: Arial, sans-serif;
         }
-        #Q{
-            font-family: cursive; 
-            color: greenyellow; 
-            text-align: center; 
-            margin-top: 150px; 
-            font-size: 78px; 
+
+        #Q {
+            font-family: cursive;
+            color: greenyellow;
+            text-align: center;
+            margin-top: 150px;
+            font-size: 78px;
             text-shadow: 7px 7px 4px blue;
         }
-        #quiz-container{
-            text-align: center; 
-            color: greenyellow; 
-            font-size: 35px; 
+
+        #quiz-container {
+            text-align: center;
+            color: greenyellow;
+            font-size: 35px;
             font-weight: bold;
         }
-        #btn{
-            border-radius: 14px; 
-            font-size: 25px; 
+
+        #btn {
+            border-radius: 14px;
+            font-size: 25px;
             background: radial-gradient(circle, #7d7cca, #b7fab1);
-            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; 
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
             color: rgb(250, 51, 1);
         }
+
         #options button {
-             border-radius: 18px; 
-             font-size: 20px; 
+            border-radius: 18px;
+            font-size: 20px;
             margin-bottom: 10px;
             background: linear-gradient(to right, white, rgb(40, 190, 201));
 
 
         }
+
         #options {
             display: flex;
-            flex-direction: column; 
-            align-items: center; 
-            margin-top: 20px; }
-        #result{
-            color: yellow; 
-        } 
-        #rodape{
-            position: fixed; /* Fixa o rodapé */
-            bottom: 0; /* Coloca o rodapé na parte inferior da página */
-            width: 100%; /* Define a largura do rodapé como 100% */
-            background-color: #333; /* Cor de fundo do rodapé */
-            color: rgb(50, 190, 10, 1.0); /* Cor do texto do rodapé */
-            padding: 20px; 
-            text-align: center;
-        }  
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
 
+        #result {
+            color: yellow;
+        }
+
+        #rodape {
+            position: fixed;
+            /* Fixa o rodapé */
+            bottom: 0;
+            /* Coloca o rodapé na parte inferior da página */
+            width: 100%;
+            /* Define a largura do rodapé como 100% */
+            background-color: #333;
+            /* Cor de fundo do rodapé */
+            color: rgb(50, 190, 10, 1.0);
+            /* Cor do texto do rodapé */
+            padding: 20px;
+            text-align: center;
+        }
     </style>
 </head>
+
 <body>
 
     <h1 id="Q">Quiz</h1>
     <div id="quiz-container">
         <div id="question"></div>
-        <div  id="options"></div>
+        <div id="options"></div>
         <button id="btn" onclick="nextQuestion()">Próxima</button>
         <br><br>
         <div id="result"></div>
@@ -93,7 +107,7 @@
                 answer: "Sergipe"
             },
             {
-                 question: "Qual capital de São Paulo?",
+                question: "Qual capital de São Paulo?",
                 options: ["Paulistanal", "Sumatém", "Santa Izabel", "São Paulo"],
                 answer: "São Paulo"
             },
@@ -122,12 +136,12 @@
                 options: ["Rio Amazonas", "Rio Nilo", "Rio Mississipi", "Rio Yangtzé"],
                 answer: "Rio Nilo"
             },
-             {
+            {
                 question: "Qual é o país mais populoso do mundo?",
                 options: ["Índia", "Estados Unidos", "China", "Brasil"],
                 answer: "China"
             },
-             {
+            {
                 question: "Qual é a capital da França?",
                 options: ["Berlim", "Londres", "Paris", "Roma"],
                 answer: "Paris"
@@ -155,6 +169,13 @@
 
         function checkAnswer(answer) {
             const currentQ = questions[currentQuestion];
+            const optionsButtons = document.querySelectorAll('#options button');
+
+            // Desabilitar todos os botões de opção
+            optionsButtons.forEach(button => {
+                button.disabled = true;
+            });
+
             if (answer === currentQ.answer) {
                 score++;
                 document.getElementById('result').textContent = "Resposta correta!";
@@ -162,6 +183,7 @@
                 document.getElementById('result').textContent = "Resposta incorreta!";
             }
         }
+
 
         function nextQuestion() {
             if (currentQuestion < questions.length - 1) {
@@ -183,4 +205,5 @@
         displayQuestion();
     </script>
 </body>
+
 </html>
