@@ -7,38 +7,46 @@
       
     <style>
         body {
-        	background-image:url(https://th.bing.com/th/id/R.37ea14d6c346f972c1c6097e8745bc1c?rik=RKaXTAy8vERgwg&pid=ImgRaw&r=0 );
+            background-image:url(https://th.bing.com/th/id/R.37ea14d6c346f972c1c6097e8745bc1c?rik=RKaXTAy8vERgwg&pid=ImgRaw&r=0 );
             font-family: Arial, sans-serif;
         }
         #Q{
-        	font-family: cursive; color: greenyellow; text-align: center; margin-top: 150px; font-size: 78px; text-shadow: 7px 7px 4px blue;
+            font-family: cursive; color: greenyellow; text-align: center; margin-top: 150px; font-size: 78px; text-shadow: 7px 7px 4px blue;
         }
         #quiz-container{
-        	text-align: center; color: greenyellow; font-size: 35px; font-weight: bold;
+            text-align: center; color: greenyellow; font-size: 35px; font-weight: bold;
         }
         #btn{
-        	border-radius: 14px; font-size: 25px;
+            border-radius: 14px; font-size: 25px; background: radial-gradient(circle, #7d7cca, #b7fab1);
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; color: rgb(250, 51, 1);
         }
-		#options button {
-   			 border-radius: 18px; font-size: 20px; flex-direction: column;
-		}
-		#options {
-    		display: flex;
-    		flex-direction: column; 
-    		align-items: center; 
-    		margin-top: 20px; }
-    	#result{
-    		color: yellow;
-    	}	
+        #options button {
+             border-radius: 18px; 
+             font-size: 20px; 
+            margin-bottom: 10px;
+            background: linear-gradient(to right, white, rgb(40, 190, 201));
+            
+
+        }
+        #options {
+            display: flex;
+            flex-direction: column; 
+            align-items: center; 
+            margin-top: 20px; }
+        #result{
+            color: yellow; 
+        }   
 
     </style>
 </head>
 <body>
+
     <h1 id="Q">Quiz</h1>
     <div id="quiz-container">
         <div id="question"></div>
         <div  id="options"></div>
         <button id="btn" onclick="nextQuestion()">Próxima</button>
+        <br><br>
         <div id="result"></div>
     </div>
 
@@ -60,7 +68,7 @@
                 answer: "Sergipe"
             },
             {
-            	 question: "Qual capital de São Paulo?",
+                 question: "Qual capital de São Paulo?",
                 options: ["Paulistanal", "Sumatém", "Santa Izabel", "São Paulo"],
                 answer: "São Paulo"
             },
@@ -75,7 +83,7 @@
                 answer: "Icuí"
             },
             {
-                question: "Analise as afirmações e responda: I- Uma cidade esta localizada dentro de um bairro.	II- Um bairro contém uma rua, e por sua vez uma rua possui um CEP.			III- Um país tem diversas cidades dentro de si, e também possui diversas avenidas e ruas em seu térritorio.IV- Um estado tem varias cidades, regiões e países dentro do seu térritorio.	Está correto as afirmativas:",
+                question: "Analise as afirmações e responda: I- Uma cidade esta localizada dentro de um bairro. II- Um bairro contém uma rua, e por sua vez uma rua possui um CEP.          III- Um país tem diversas cidades dentro de si, e também possui diversas avenidas e ruas em seu térritorio.IV- Um estado tem varias cidades, regiões e países dentro do seu térritorio. Está correto as afirmativas:",
                 options: ["I, II e IV", "II e IV", "II e III", "Todas alternativas estão corretas"],
                 answer: "II e III"
             },
